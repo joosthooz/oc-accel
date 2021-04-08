@@ -40,6 +40,7 @@ snap_env_sh        = $(SNAP_ROOT)/snap_env.sh
 -include $(snap_env_sh)
 
 SIMULATOR ?= nosim
+VIVADO_MAJOR_RELEASE = $(shell vivado -version | grep Vivado | cut -d '.' -f1 | tr -d "Vivado ")
 
 #small case -- not used
 #FPGA_CARD := $(shell echo $(FPGACARD) | tr '[:upper:]' '[:lower:]')
@@ -84,6 +85,7 @@ SNAP_TMP_FILES =  $(SIM_DIR)/README.txt
 SNAP_ACTION_DCP=$(DCP_ROOT)/user_action_synth.dcp
 SNAP_BASE_DCP=$(DCP_ROOT)/snap_static_region_bb.dcp
 
+
 #
 # FIXME Targets in this Makefile are to be build in the correct order.
 #      Parallelization e.g. by using -jN will not work at this point in time
@@ -92,7 +94,7 @@ SNAP_BASE_DCP=$(DCP_ROOT)/snap_static_region_bb.dcp
 
 ifeq ($(PLATFORM),x86_64)
 
-.PHONY: all snap_config check_snap_settings check_simulator prepare_project snap_preprocess_start snap_preprocess_execute snap_preprocess patch_version action_hw create_hls_ip create_project hw_project_start hw_project .hw_project_done sim_project .sim_project_done config image cloud_enable cloud_base cloud_action cloud_merge ocse software app model xsim irun nosim sim clean
+.PHONY: all snap_config check_snap_settings check_simulator prepare_project snap_preprocess_start snap_preprocess_execute snap_preprocess patch_version action_hw create_hls_ip create_project hw_project_start hw_project .hw_project_done sim_project .sim_project_done config image synth place route cloud_enable cloud_base cloud_action cloud_merge ocse software app model xsim irun nosim sim clean
 
 all: model image
 
@@ -239,11 +241,27 @@ action_hw: prepare_logs
 	fi
 	@echo -e "[CONFIG ACTION HW....] done  `date +"%T %a %b %d %Y"`";
 
-.create_ethernet_done: prepare_logs
+.create_ethernet_done:
 	@echo -e "[CREATE ETHERNET IP..] start `date +"%T %a %b %d %Y"`";
 	@rm -rf $(SNAP_HARDWARE_ROOT)/ip/eth_100G
 	echo "Calling create_eth_100G TCL script" >> $(LOGS_DIR)/eth_100G_make.log; 
-	@echo -e "			generating 100G Ethernet IP";
+	@if [ "$(ENABLE_EMAC_V3_1)" == "TRUE" ]; then \
+		if [ $(VIVADO_MAJOR_RELEASE) -gt "2019" ]; then \
+			echo -e "			generating 100G Ethernet IP V3.1"; \
+		else \
+			echo -e "##ERROR: Vivado $(VIVADO_MAJOR_RELEASE) is incompatible with  100G Ethernet IP V3.1"; \
+			echo -e "    Please rerun 'make snap_config' to set correctly the variables"; \
+			exit -1; \
+		fi; \
+	else \
+		if [ $(VIVADO_MAJOR_RELEASE) -gt "2019" ]; then \
+			echo -e "##ERROR: Vivado $(VIVADO_MAJOR_RELEASE) is incompatible with  100G Ethernet IP V3.0"; \
+			echo -e "    Please rerun 'make snap_config' to set correctly the variables"; \
+			exit -1; \
+		else \
+			echo -e "			generating 100G Ethernet IP V3.0"; \
+		fi; \
+	fi
 	@cd $(BUILD_DIR)  &&  vivado -quiet -mode batch -source $(SETUP_DIR)/create_eth_100G_ip.tcl -notrace -log $(LOGS_DIR)/eth_100G_make.log -journal $(LOGS_DIR)/eth_100G_make.jou >> $(LOGS_DIR)/eth_100G_make.log; 
 	@echo -e "[CREATE ETHERNET IP..] done `date +"%T %a %b %d %Y"`";
 	@touch .create_ethernet_done
@@ -332,6 +350,33 @@ config: hw_project
 ##	@echo -e "[CHECK TLx.......] done `date +"%T %a %b %d %Y"`";
 #	@$(MAKE) -C $(SNAP_HARDWARE_ROOT)/oc-bip unit_sim;
 
+#-----
+# 'make synth' is the 1rst step (out of 3) of a 'make image' containing synthesis + opt_design 
+synth:
+	$(MAKE) .hw_project_done
+	@echo -e "[BUILD synthesis only] start `date +"%T %a %b %d %Y"`\n"
+	@cd $(BUILD_DIR) && env IMPL_STEP=SYNTH vivado -quiet -mode batch -source $(SETUP_DIR)/snap_build.tcl -notrace -log $(LOGS_DIR)/snap_build.log -journal $(LOGS_DIR)/snap_build.jou
+	@echo -e "[BUILD synthesis only] done  `date +"%T %a %b %d %Y"`"
+	@echo -e "--- Recommended next step : 'make place' ---"
+
+# 'make place' is the 2nd step (out of 3) of a 'make image' containing place_design + phys_opt_design 
+place:
+	@echo -e "--- 2nd step to build an image: You must have run a 'make synth' previously.\n"
+	@echo -e "--- You'll be given a rough estimate of the WNS you can expect after routing\n"
+	@echo -e "[BUILD placing only..] start `date +"%T %a %b %d %Y"`\n"
+	@cd $(BUILD_DIR) && env IMPL_STEP=PLACE vivado -quiet -mode batch -source $(SETUP_DIR)/snap_build.tcl -notrace -log $(LOGS_DIR)/snap_build.log -journal $(LOGS_DIR)/snap_build.jou
+	@echo -e "[BUILD placing only..] done  `date +"%T %a %b %d %Y"`"
+	@echo -e "--- Recommended next step : 'make route' ---"
+
+# 'make route' is the 3rd step (out of 3) of a 'make image' containing route_design + phys_opt_design + generate_bitstreams
+route:
+	@echo -e "--- 3rd step to build an image: You must have run a 'make place' previously.\n"
+	@echo -e "[BUILD routing only..] start `date +"%T %a %b %d %Y"`\n"
+	@cd $(BUILD_DIR) && env IMPL_STEP=ROUTE vivado -quiet -mode batch -source $(SETUP_DIR)/snap_build.tcl -notrace -log $(LOGS_DIR)/snap_build.log -journal $(LOGS_DIR)/snap_build.jou
+	@$(RM) -r .bitstream_name.txt
+	@echo -e "[BUILD routing only..] done  `date +"%T %a %b %d %Y"`"
+#-----
+
 image:
 	$(MAKE) .hw_project_done
 	@echo -e "[BUILD IMAGE.........] start `date +"%T %a %b %d %Y"`\n"
@@ -342,7 +387,7 @@ else
 	@echo "This might take more than an hour depending on the machine used";
 	@echo "The process may be terminated by pressing <CTRL>-C at any time.";
 	@echo "After termination it can be restarted later."; echo
-	@cd $(BUILD_DIR) && vivado -quiet -mode batch -source $(SETUP_DIR)/snap_build.tcl -notrace -log $(LOGS_DIR)/snap_build.log -journal $(LOGS_DIR)/snap_build.jou
+	@cd $(BUILD_DIR) && env IMPL_STEP=ALL vivado -quiet -mode batch -source $(SETUP_DIR)/snap_build.tcl -notrace -log $(LOGS_DIR)/snap_build.log -journal $(LOGS_DIR)/snap_build.jou
 	@$(RM) -r .bitstream_name.txt
 endif
 ifeq ($(ILA_DEBUG),TRUE)
@@ -398,6 +443,8 @@ cloud_merge: allow_cloud_merge $(SNAP_BASE_DCP) $(SNAP_ACTION_DCP)
 ocse: prepare_logs
 	@echo -e "[COMPILE OCSE .......] start `date +"%T %a %b %d %Y"`"
 	@$(SNAP_ROOT)/check_ocse.sh > $(LOGS_DIR)/compile_ocse.log 2>&1
+## Switch the comments (and check the slatch) on the following lines to allow debugging OCSE (Open CAPI Simulation engine)
+##	@$(MAKE) DEBUG=1 -C $(OCSE_ROOT) >> $(LOGS_DIR)/compile_ocse.log 2>&1; 
 	@$(MAKE) -C $(OCSE_ROOT) >> $(LOGS_DIR)/compile_ocse.log 2>&1; \
 	if [ $$? -ne 0 ]; then echo -e "                        Error: please look into $(LOGS_DIR)/compile_ocse.log"; exit -1; fi
 	@echo -e "[COMPILE OCSE .......] done  `date +"%T %a %b %d %Y"`"

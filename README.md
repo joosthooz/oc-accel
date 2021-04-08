@@ -2,12 +2,15 @@
 
 OpenCAPI Acceleration Framework, abbreviated as OC-Accel, is a framework that helps you implement your FPGA acceleration solutions with OpenCAPI technology.
 
+# Documentation
+ <https://opencapi.github.io/oc-accel-doc/>
+
 # Dependencies 
  * On a X86 server:
-    * Install Xilinx tools (tested with Vivado 2019.2) with the desired fpga family (used by the card you want to test).
+    * Install Xilinx tools (Check <https://opencapi.github.io/oc-accel-doc/#dependencies>) with the desired fpga family (used by the card you want to test).
     * set XILINX_ROOT and XILINXD_LICENSE_FILE accordingly and source Xilinx setting shell: 
     ```console
-    export XILINX_ROOT=/opt/Xilinx/xxxx.y   # setup your xilinx tools install dir. eg xxxx.y = 2019.2
+    export XILINX_ROOT=/opt/Xilinx/xxxx.y   # setup your xilinx tools install dir. eg xxxx.y = 2020.1
     export XILINXD_LICENSE_FILE=2100@xxxxx.com	# Vivado license
     . $XILINX_ROOT/settings64.sh
     ```
@@ -33,7 +36,7 @@ OpenCAPI Acceleration Framework, abbreviated as OC-Accel, is a framework that he
    ```console
    make sim     ## (or make sim_tmux if no xterm available)
    ```
- * In the terminal run: 
+ * In the terminal run:(stay in the current default directory) 
    ```console
    snap_helloworld_1024 # the default help will propose the simulation example 
    ```
@@ -52,7 +55,7 @@ OpenCAPI Acceleration Framework, abbreviated as OC-Accel, is a framework that he
         * Transfer the .bin file into the POWER server by any mean (scp, ftp, ...)
         * Use OpenCAPI Utils tools to load the oc_date_XX_hls_helloworld_1024_YY_OC-card_YY.bin file.
            ```console
-           sudo git clone https://github.ibm.com/OC-Enablement/oc-utils.git
+           sudo git clone https://github.com/OpenCAPI/oc-utils.git
            sudo make install # default installation
            ```
         * Flash the card memory.
@@ -70,10 +73,6 @@ OpenCAPI Acceleration Framework, abbreviated as OC-Accel, is a framework that he
   ./actions/hls_helloworld_1024/tests/hw_test.sh
   ```
 * Check results
-
-# Documentation
- <https://opencapi.github.io/oc-accel-doc/>
-
 
 # Contributing
 This is an open-source project. We greatly appreciate your contributions and collaboration.
