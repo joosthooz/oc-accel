@@ -24,7 +24,8 @@ NAME=`basename $2`
 
 
 #Patch build date and git version
-SNAP_BUILD_DATE=`date "+%Y_%m%d_%H%M"`
+#SNAP_BUILD_DATE=`date "+%Y_%m%d_%H%M"`
+SNAP_BUILD_DATE=2021_0325_1210
 SNAP_RELEASE=`git describe --tags --always --match v[0-9]*.[0-9]*.[0-9]* | sed 's/.*\([0-9a-fA-F][0-9a-fA-F]\)\([0-9a-fA-F][0-9a-fA-F]\)\([0-9a-fA-F][0-9a-fA-F]\).*/\1 \2 \3/' | awk '{printf("%02X_%02X_%02X\n",$1,$2,$3)}'`
 GIT_DIST=`git describe --tags --always --match v[0-9]*.[0-9]*.[0-9]* | awk '{printf("%s-0\n",$1)}' | sed 's/.*\.[0-9][0-9]*-\([0-9][0-9]*\).*/\1/' | awk '{printf("%02X\n",$1)}'`
 if [ ! -z `echo $GIT_DIST | sed 's/[0-9A-F][0-9A-F]//'` ]; then GIT_DIST="FF"; fi
