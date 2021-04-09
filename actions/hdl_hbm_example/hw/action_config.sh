@@ -34,6 +34,13 @@ for vhdsource in *.vhd_source; do
     vhdfile=`echo $vhdsource | sed 's/vhd_source$/vhd/'`
     echo -e "\t                        generating $vhdfile"
     grep -v "$DDRI_FILTER" $vhdsource | grep -v "$NVME_FILTER" > $vhdfile
+    sed -i -e "/--HBM_ENTITY_PORTS_INSERTION_POINT/r hbmports.txt" $vhdfile
+    sed -i -e "/--HBM_ASSIGNMENT_INSERTION_POINT/r hbmassignments.txt" $vhdfile
+    sed -i -e "/--HBMIPPORTS_INSERTION_POINT/r hbmipports.txt" $vhdfile
+    sed -i -e "/--HBM_IPASSIGNMENT_INSERTION_POINT/r hbmipassignments.txt" $vhdfile
+    sed -i -e "/--HBM_PARAMETERS_INSERTION_POINT/r hbmparams.txt" $vhdfile
+    sed -i -e "/--HBM_PARAMETERASSIGNMENT_INSERTION_POINT/r hbmparamassignments.txt" $vhdfile
+    sed -i -e "/--HBM_CONSTANTS_INSERTION_POINT/r hbmconstants.txt" $vhdfile
 done
 
 if [ ! -d $ACTION_ROOT/ip/action_ip_dir ]; then

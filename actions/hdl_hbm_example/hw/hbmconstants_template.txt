@@ -1,0 +1,8 @@
+CONSTANT    C_M_AXI_CARD_HBM_P@@_ID_WIDTH     : integer  := 4;
+CONSTANT    C_M_AXI_CARD_HBM_P@@_DATA_WIDTH   : integer  := 256;
+CONSTANT    C_M_AXI_CARD_HBM_P@@_ADDR_WIDTH   : integer  := 64;
+CONSTANT    C_M_AXI_CARD_HBM_P@@_AWUSER_WIDTH : integer  := 1;
+CONSTANT    C_M_AXI_CARD_HBM_P@@_WUSER_WIDTH  : integer  := 1;
+CONSTANT    C_M_AXI_CARD_HBM_P@@_ARUSER_WIDTH : integer  := 1;
+CONSTANT    C_M_AXI_CARD_HBM_P@@_RUSER_WIDTH  : integer  := 1;
+CONSTANT    C_M_AXI_CARD_HBM_P@@_BUSER_WIDTH  : integer  := 1;

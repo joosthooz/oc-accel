@@ -33,57 +33,14 @@ ENTITY action_wrapper IS
     interrupt_ack              : IN STD_LOGIC;
     --
     -- HBM interfaces
-    m_axi_card_hbm_p0_awvalid : OUT STD_LOGIC;
-    m_axi_card_hbm_p0_awready : IN STD_LOGIC;
-    m_axi_card_hbm_p0_awaddr : OUT STD_LOGIC_VECTOR (C_M_AXI_CARD_HBM_P0_ADDR_widTH-1 downto 0);
-    m_axi_card_hbm_p0_awid : OUT STD_LOGIC_VECTOR (C_M_AXI_CARD_HBM_P0_ID_widTH-1 downto 0);
-    m_axi_card_hbm_p0_awlen : OUT STD_LOGIC_VECTOR (7 downto 0);
-    m_axi_card_hbm_p0_awsize : OUT STD_LOGIC_VECTOR (2 downto 0);
-    m_axi_card_hbm_p0_awburst : OUT STD_LOGIC_VECTOR (1 downto 0);
-    m_axi_card_hbm_p0_awlock : OUT STD_LOGIC_VECTOR (1 downto 0);
-    m_axi_card_hbm_p0_awcache : OUT STD_LOGIC_VECTOR (3 downto 0);
-    m_axi_card_hbm_p0_awprot : OUT STD_LOGIC_VECTOR (2 downto 0);
-    m_axi_card_hbm_p0_awqos : OUT STD_LOGIC_VECTOR (3 downto 0);
-    m_axi_card_hbm_p0_awregion : OUT STD_LOGIC_VECTOR (3 downto 0);
-    m_axi_card_hbm_p0_awuser : OUT STD_LOGIC_VECTOR (C_M_AXI_CARD_HBM_P0_awuser_widTH-1 downto 0);
-    m_axi_card_hbm_p0_wvalid : OUT STD_LOGIC;
-    m_axi_card_hbm_p0_wready : IN STD_LOGIC;
-    m_axi_card_hbm_p0_wdata : OUT STD_LOGIC_VECTOR (C_M_AXI_CARD_HBM_P0_DATA_widTH-1 downto 0);
-    m_axi_card_hbm_p0_wstrb : OUT STD_LOGIC_VECTOR (C_M_AXI_CARD_HBM_P0_DATA_widTH/8-1 downto 0);
-    m_axi_card_hbm_p0_wlast : OUT STD_LOGIC;
-    m_axi_card_hbm_p0_wid : OUT STD_LOGIC_VECTOR (C_M_AXI_CARD_HBM_P0_ID_widTH-1 downto 0);
-    m_axi_card_hbm_p0_wuser : OUT STD_LOGIC_VECTOR (C_M_AXI_CARD_HBM_P0_wuser_widTH-1 downto 0);
-    m_axi_card_hbm_p0_arvalid : OUT STD_LOGIC;
-    m_axi_card_hbm_p0_arready : IN STD_LOGIC;
-    m_axi_card_hbm_p0_araddr : OUT STD_LOGIC_VECTOR (C_M_AXI_CARD_HBM_P0_ADDR_widTH-1 downto 0);
-    m_axi_card_hbm_p0_arid : OUT STD_LOGIC_VECTOR (C_M_AXI_CARD_HBM_P0_ID_widTH-1 downto 0);
-    m_axi_card_hbm_p0_arlen : OUT STD_LOGIC_VECTOR (7 downto 0);
-    m_axi_card_hbm_p0_arsize : OUT STD_LOGIC_VECTOR (2 downto 0);
-    m_axi_card_hbm_p0_arburst : OUT STD_LOGIC_VECTOR (1 downto 0);
-    m_axi_card_hbm_p0_arlock : OUT STD_LOGIC_VECTOR (1 downto 0);
-    m_axi_card_hbm_p0_arcache : OUT STD_LOGIC_VECTOR (3 downto 0);
-    m_axi_card_hbm_p0_arprot : OUT STD_LOGIC_VECTOR (2 downto 0);
-    m_axi_card_hbm_p0_arqos : OUT STD_LOGIC_VECTOR (3 downto 0);
-    m_axi_card_hbm_p0_arregion : OUT STD_LOGIC_VECTOR (3 downto 0);
-    m_axi_card_hbm_p0_aruser : OUT STD_LOGIC_VECTOR (C_M_AXI_CARD_HBM_P0_aruser_widTH-1 downto 0);
-    m_axi_card_hbm_p0_rvalid : IN STD_LOGIC;
-    m_axi_card_hbm_p0_rready : OUT STD_LOGIC;
-    m_axi_card_hbm_p0_rdata : IN STD_LOGIC_VECTOR (C_M_AXI_CARD_HBM_P0_DATA_widTH-1 downto 0);
-    m_axi_card_hbm_p0_rlast : IN STD_LOGIC;
-    m_axi_card_hbm_p0_rid : IN STD_LOGIC_VECTOR (C_M_AXI_CARD_HBM_P0_ID_widTH-1 downto 0);
-    m_axi_card_hbm_p0_ruser : IN STD_LOGIC_VECTOR (C_M_AXI_CARD_HBM_P0_ruser_widTH-1 downto 0);
-    m_axi_card_hbm_p0_rresp : IN STD_LOGIC_VECTOR (1 downto 0);
-    m_axi_card_hbm_p0_bvalid : IN STD_LOGIC;
-    m_axi_card_hbm_p0_bready : OUT STD_LOGIC;
-    m_axi_card_hbm_p0_bresp : IN STD_LOGIC_VECTOR (1 downto 0);
-    m_axi_card_hbm_p0_bid : IN STD_LOGIC_VECTOR (C_M_AXI_CARD_HBM_P0_ID_widTH-1 downto 0);
-    m_axi_card_hbm_p0_buser : IN STD_LOGIC_VECTOR (C_M_AXI_CARD_HBM_P0_buser_widTH-1 downto 0);
+    --HBM_ENTITY_PORTS_INSERTION_POINT
+    
     --                                                                                                 -- only for NVME_USED=TRUE
     -- AXI NVME Interface                                                                              -- only for NVME_USED=TRUE
-    m_axi_nvme_araddr          : OUT STD_LOGIC_VECTOR ( C_M_AXI_NVME_ADDR_widTH -1 DOWNTO 0 );         -- only for NVME_USED=TRUE
+    m_axi_nvme_araddr          : OUT STD_LOGIC_VECTOR ( C_M_AXI_NVME_ADDR_WIDTH -1 DOWNTO 0 );         -- only for NVME_USED=TRUE
     m_axi_nvme_arburst         : OUT STD_LOGIC_VECTOR ( 1 DOWNTO 0 );                                  -- only for NVME_USED=TRUE
     m_axi_nvme_arcache         : OUT STD_LOGIC_VECTOR ( 3 DOWNTO 0 );                                  -- only for NVME_USED=TRUE
-    m_axi_nvme_arid            : OUT STD_LOGIC_VECTOR ( C_M_AXI_NVME_ID_widTH -1 DOWNTO 0 );           -- only for NVME_USED=TRUE
+    m_axi_nvme_arid            : OUT STD_LOGIC_VECTOR ( C_M_AXI_NVME_ID_WIDTH -1 DOWNTO 0 );           -- only for NVME_USED=TRUE
     m_axi_nvme_arlen           : OUT STD_LOGIC_VECTOR ( 7 DOWNTO 0 );                                  -- only for NVME_USED=TRUE
     m_axi_nvme_arlock          : OUT STD_LOGIC_VECTOR ( 1 DOWNTO 0 );                                  -- only for NVME_USED=TRUE
     m_axi_nvme_arprot          : OUT STD_LOGIC_VECTOR ( 2 DOWNTO 0 );                                  -- only for NVME_USED=TRUE
@@ -91,12 +48,12 @@ ENTITY action_wrapper IS
     m_axi_nvme_arready         : IN  STD_LOGIC;                                                        -- only for NVME_USED=TRUE
     m_axi_nvme_arregion        : OUT STD_LOGIC_VECTOR ( 3 DOWNTO 0 );                                  -- only for NVME_USED=TRUE
     m_axi_nvme_arsize          : OUT STD_LOGIC_VECTOR ( 2 DOWNTO 0 );                                  -- only for NVME_USED=TRUE
-    m_axi_nvme_aruser          : OUT STD_LOGIC_VECTOR ( C_M_AXI_NVME_aruser_widTH -1 DOWNTO 0 );       -- only for NVME_USED=TRUE
+    m_axi_nvme_aruser          : OUT STD_LOGIC_VECTOR ( C_M_AXI_NVME_ARUSER_WIDTH -1 DOWNTO 0 );       -- only for NVME_USED=TRUE
     m_axi_nvme_arvalid         : OUT STD_LOGIC;                                                        -- only for NVME_USED=TRUE
-    m_axi_nvme_awaddr          : OUT STD_LOGIC_VECTOR ( C_M_AXI_NVME_ADDR_widTH -1 DOWNTO 0 );         -- only for NVME_USED=TRUE
+    m_axi_nvme_awaddr          : OUT STD_LOGIC_VECTOR ( C_M_AXI_NVME_ADDR_WIDTH -1 DOWNTO 0 );         -- only for NVME_USED=TRUE
     m_axi_nvme_awburst         : OUT STD_LOGIC_VECTOR ( 1 DOWNTO 0 );                                  -- only for NVME_USED=TRUE
     m_axi_nvme_awcache         : OUT STD_LOGIC_VECTOR ( 3 DOWNTO 0 );                                  -- only for NVME_USED=TRUE
-    m_axi_nvme_awid            : OUT STD_LOGIC_VECTOR ( C_M_AXI_NVME_ID_widTH -1 DOWNTO 0 );           -- only for NVME_USED=TRUE
+    m_axi_nvme_awid            : OUT STD_LOGIC_VECTOR ( C_M_AXI_NVME_ID_WIDTH -1 DOWNTO 0 );           -- only for NVME_USED=TRUE
     m_axi_nvme_awlen           : OUT STD_LOGIC_VECTOR ( 7 DOWNTO 0 );                                  -- only for NVME_USED=TRUE
     m_axi_nvme_awlock          : OUT STD_LOGIC_VECTOR ( 1 DOWNTO 0 );                                  -- only for NVME_USED=TRUE
     m_axi_nvme_awprot          : OUT STD_LOGIC_VECTOR ( 2 DOWNTO 0 );                                  -- only for NVME_USED=TRUE
@@ -104,51 +61,51 @@ ENTITY action_wrapper IS
     m_axi_nvme_awready         : IN  STD_LOGIC;                                                        -- only for NVME_USED=TRUE
     m_axi_nvme_awregion        : OUT STD_LOGIC_VECTOR ( 3 DOWNTO 0 );                                  -- only for NVME_USED=TRUE
     m_axi_nvme_awsize          : OUT STD_LOGIC_VECTOR ( 2 DOWNTO 0 );                                  -- only for NVME_USED=TRUE
-    m_axi_nvme_awuser          : OUT STD_LOGIC_VECTOR ( C_M_AXI_NVME_awuser_widTH -1 DOWNTO 0 );       -- only for NVME_USED=TRUE
+    m_axi_nvme_awuser          : OUT STD_LOGIC_VECTOR ( C_M_AXI_NVME_AWUSER_WIDTH -1 DOWNTO 0 );       -- only for NVME_USED=TRUE
     m_axi_nvme_awvalid         : OUT STD_LOGIC;                                                        -- only for NVME_USED=TRUE
-    m_axi_nvme_bid             : IN  STD_LOGIC_VECTOR ( C_M_AXI_NVME_ID_widTH -1 DOWNTO 0 );           -- only for NVME_USED=TRUE
+    m_axi_nvme_bid             : IN  STD_LOGIC_VECTOR ( C_M_AXI_NVME_ID_WIDTH -1 DOWNTO 0 );           -- only for NVME_USED=TRUE
     m_axi_nvme_bready          : OUT STD_LOGIC;                                                        -- only for NVME_USED=TRUE
     m_axi_nvme_bresp           : IN  STD_LOGIC_VECTOR ( 1 DOWNTO 0 );                                  -- only for NVME_USED=TRUE
-    m_axi_nvme_buser           : IN  STD_LOGIC_VECTOR ( C_M_AXI_NVME_buser_widTH -1 downto 0 );        -- only for NVME_USED=TRUE
+    m_axi_nvme_buser           : IN  STD_LOGIC_VECTOR ( C_M_AXI_NVME_BUSER_WIDTH -1 downto 0 );        -- only for NVME_USED=TRUE
     m_axi_nvme_bvalid          : IN  STD_LOGIC;                                                        -- only for NVME_USED=TRUE
-    m_axi_nvme_rdata           : IN  STD_LOGIC_VECTOR ( C_M_AXI_NVME_DATA_widTH -1 DOWNTO 0 );         -- only for NVME_USED=TRUE
-    m_axi_nvme_rid             : IN  STD_LOGIC_VECTOR ( C_M_AXI_NVME_ID_widTH -1 DOWNTO 0 );           -- only for NVME_USED=TRUE
+    m_axi_nvme_rdata           : IN  STD_LOGIC_VECTOR ( C_M_AXI_NVME_DATA_WIDTH -1 DOWNTO 0 );         -- only for NVME_USED=TRUE
+    m_axi_nvme_rid             : IN  STD_LOGIC_VECTOR ( C_M_AXI_NVME_ID_WIDTH -1 DOWNTO 0 );           -- only for NVME_USED=TRUE
     m_axi_nvme_rlast           : IN  STD_LOGIC;                                                        -- only for NVME_USED=TRUE
     m_axi_nvme_rready          : OUT STD_LOGIC;                                                        -- only for NVME_USED=TRUE
     m_axi_nvme_rresp           : IN  STD_LOGIC_VECTOR ( 1 DOWNTO 0 );                                  -- only for NVME_USED=TRUE
-    m_axi_nvme_ruser           : IN  STD_LOGIC_VECTOR ( C_M_AXI_NVME_ruser_widTH -1 DOWNTO 0 );        -- only for NVME_USED=TRUE
+    m_axi_nvme_ruser           : IN  STD_LOGIC_VECTOR ( C_M_AXI_NVME_RUSER_WIDTH -1 DOWNTO 0 );        -- only for NVME_USED=TRUE
     m_axi_nvme_rvalid          : IN  STD_LOGIC;                                                        -- only for NVME_USED=TRUE
-    m_axi_nvme_wdata           : OUT STD_LOGIC_VECTOR (C_M_AXI_NVME_DATA_widTH -1 DOWNTO 0 );          -- only for NVME_USED=TRUE
+    m_axi_nvme_wdata           : OUT STD_LOGIC_VECTOR (C_M_AXI_NVME_DATA_WIDTH -1 DOWNTO 0 );          -- only for NVME_USED=TRUE
     m_axi_nvme_wlast           : OUT STD_LOGIC;                                                        -- only for NVME_USED=TRUE
     m_axi_nvme_wready          : IN  STD_LOGIC;                                                        -- only for NVME_USED=TRUE
-    m_axi_nvme_wstrb           : OUT STD_LOGIC_VECTOR ((C_M_AXI_NVME_DATA_widTH/8) -1 DOWNTO 0 );      -- only for NVME_USED=TRUE
-    m_axi_nvme_wuser           : OUT STD_LOGIC_VECTOR (C_M_AXI_NVME_wuser_widTH -1 DOWNTO 0 );         -- only for NVME_USED=TRUE
+    m_axi_nvme_wstrb           : OUT STD_LOGIC_VECTOR ((C_M_AXI_NVME_DATA_WIDTH/8) -1 DOWNTO 0 );      -- only for NVME_USED=TRUE
+    m_axi_nvme_wuser           : OUT STD_LOGIC_VECTOR (C_M_AXI_NVME_WUSER_WIDTH -1 DOWNTO 0 );         -- only for NVME_USED=TRUE
     m_axi_nvme_wvalid          : OUT STD_LOGIC;                                                        -- only for NVME_USED=TRUE
     --
     -- AXI Control Register Interface
-    s_axi_ctrl_reg_araddr      : IN  STD_LOGIC_VECTOR ( C_S_AXI_CTRL_REG_ADDR_widTH-1 DOWNTO 0 );
+    s_axi_ctrl_reg_araddr      : IN  STD_LOGIC_VECTOR ( C_S_AXI_CTRL_REG_ADDR_WIDTH-1 DOWNTO 0 );
     s_axi_ctrl_reg_arready     : OUT STD_LOGIC;
     s_axi_ctrl_reg_arvalid     : IN  STD_LOGIC;
-    s_axi_ctrl_reg_awaddr      : IN  STD_LOGIC_VECTOR ( C_S_AXI_CTRL_REG_ADDR_widTH-1 DOWNTO 0 );
+    s_axi_ctrl_reg_awaddr      : IN  STD_LOGIC_VECTOR ( C_S_AXI_CTRL_REG_ADDR_WIDTH-1 DOWNTO 0 );
     s_axi_ctrl_reg_awready     : OUT STD_LOGIC;
     s_axi_ctrl_reg_awvalid     : IN  STD_LOGIC;
     s_axi_ctrl_reg_bready      : IN  STD_LOGIC;
     s_axi_ctrl_reg_bresp       : OUT STD_LOGIC_VECTOR ( 1 DOWNTO 0 );
     s_axi_ctrl_reg_bvalid      : OUT STD_LOGIC;
-    s_axi_ctrl_reg_rdata       : OUT STD_LOGIC_VECTOR ( C_S_AXI_CTRL_REG_DATA_widTH-1 DOWNTO 0 );
+    s_axi_ctrl_reg_rdata       : OUT STD_LOGIC_VECTOR ( C_S_AXI_CTRL_REG_DATA_WIDTH-1 DOWNTO 0 );
     s_axi_ctrl_reg_rready      : IN  STD_LOGIC;
     s_axi_ctrl_reg_rresp       : OUT STD_LOGIC_VECTOR ( 1 DOWNTO 0 );
     s_axi_ctrl_reg_rvalid      : OUT STD_LOGIC;
-    s_axi_ctrl_reg_wdata       : IN  STD_LOGIC_VECTOR ( C_S_AXI_CTRL_REG_DATA_widTH-1 DOWNTO 0 );
+    s_axi_ctrl_reg_wdata       : IN  STD_LOGIC_VECTOR ( C_S_AXI_CTRL_REG_DATA_WIDTH-1 DOWNTO 0 );
     s_axi_ctrl_reg_wready      : OUT STD_LOGIC;
-    s_axi_ctrl_reg_wstrb       : IN  STD_LOGIC_VECTOR ( (C_S_AXI_CTRL_REG_DATA_widTH/8)-1 DOWNTO 0 );
+    s_axi_ctrl_reg_wstrb       : IN  STD_LOGIC_VECTOR ( (C_S_AXI_CTRL_REG_DATA_WIDTH/8)-1 DOWNTO 0 );
     s_axi_ctrl_reg_wvalid      : IN  STD_LOGIC;
     --
     -- AXI Host Memory Interface
-    m_axi_host_mem_araddr      : OUT STD_LOGIC_VECTOR ( C_M_AXI_HOST_MEM_ADDR_widTH-1 DOWNTO 0 );
+    m_axi_host_mem_araddr      : OUT STD_LOGIC_VECTOR ( C_M_AXI_HOST_MEM_ADDR_WIDTH-1 DOWNTO 0 );
     m_axi_host_mem_arburst     : OUT STD_LOGIC_VECTOR ( 1 DOWNTO 0 );
     m_axi_host_mem_arcache     : OUT STD_LOGIC_VECTOR ( 3 DOWNTO 0 );
-    m_axi_host_mem_arid        : OUT STD_LOGIC_VECTOR ( C_M_AXI_HOST_MEM_ID_widTH-1 DOWNTO 0 );
+    m_axi_host_mem_arid        : OUT STD_LOGIC_VECTOR ( C_M_AXI_HOST_MEM_ID_WIDTH-1 DOWNTO 0 );
     m_axi_host_mem_arlen       : OUT STD_LOGIC_VECTOR ( 7 DOWNTO 0 );
     m_axi_host_mem_arlock      : OUT STD_LOGIC_VECTOR ( 1 DOWNTO 0 );
     m_axi_host_mem_arprot      : OUT STD_LOGIC_VECTOR ( 2 DOWNTO 0 );
@@ -156,12 +113,12 @@ ENTITY action_wrapper IS
     m_axi_host_mem_arready     : IN  STD_LOGIC;
     m_axi_host_mem_arregion    : OUT STD_LOGIC_VECTOR ( 3 DOWNTO 0 );
     m_axi_host_mem_arsize      : OUT STD_LOGIC_VECTOR ( 2 DOWNTO 0 );
-    m_axi_host_mem_aruser      : OUT STD_LOGIC_VECTOR ( C_M_AXI_HOST_MEM_aruser_widTH-1 DOWNTO 0 );
+    m_axi_host_mem_aruser      : OUT STD_LOGIC_VECTOR ( C_M_AXI_HOST_MEM_ARUSER_WIDTH-1 DOWNTO 0 );
     m_axi_host_mem_arvalid     : OUT STD_LOGIC;
-    m_axi_host_mem_awaddr      : OUT STD_LOGIC_VECTOR ( C_M_AXI_HOST_MEM_ADDR_widTH-1 DOWNTO 0 );
+    m_axi_host_mem_awaddr      : OUT STD_LOGIC_VECTOR ( C_M_AXI_HOST_MEM_ADDR_WIDTH-1 DOWNTO 0 );
     m_axi_host_mem_awburst     : OUT STD_LOGIC_VECTOR ( 1 DOWNTO 0 );
     m_axi_host_mem_awcache     : OUT STD_LOGIC_VECTOR ( 3 DOWNTO 0 );
-    m_axi_host_mem_awid        : OUT STD_LOGIC_VECTOR ( C_M_AXI_HOST_MEM_ID_widTH-1 DOWNTO 0 );
+    m_axi_host_mem_awid        : OUT STD_LOGIC_VECTOR ( C_M_AXI_HOST_MEM_ID_WIDTH-1 DOWNTO 0 );
     m_axi_host_mem_awlen       : OUT STD_LOGIC_VECTOR ( 7 DOWNTO 0 );
     m_axi_host_mem_awlock      : OUT STD_LOGIC_VECTOR ( 1 DOWNTO 0 );
     m_axi_host_mem_awprot      : OUT STD_LOGIC_VECTOR ( 2 DOWNTO 0 );
@@ -169,25 +126,25 @@ ENTITY action_wrapper IS
     m_axi_host_mem_awready     : IN  STD_LOGIC;
     m_axi_host_mem_awregion    : OUT STD_LOGIC_VECTOR ( 3 DOWNTO 0 );
     m_axi_host_mem_awsize      : OUT STD_LOGIC_VECTOR ( 2 DOWNTO 0 );
-    m_axi_host_mem_awuser      : OUT STD_LOGIC_VECTOR ( C_M_AXI_HOST_MEM_awuser_widTH-1 DOWNTO 0 );
+    m_axi_host_mem_awuser      : OUT STD_LOGIC_VECTOR ( C_M_AXI_HOST_MEM_AWUSER_WIDTH-1 DOWNTO 0 );
     m_axi_host_mem_awvalid     : OUT STD_LOGIC;
-    m_axi_host_mem_bid         : IN  STD_LOGIC_VECTOR ( C_M_AXI_HOST_MEM_ID_widTH-1 DOWNTO 0 );
+    m_axi_host_mem_bid         : IN  STD_LOGIC_VECTOR ( C_M_AXI_HOST_MEM_ID_WIDTH-1 DOWNTO 0 );
     m_axi_host_mem_bready      : OUT STD_LOGIC;
     m_axi_host_mem_bresp       : IN  STD_LOGIC_VECTOR ( 1 DOWNTO 0 );
-    m_axi_host_mem_buser       : IN  STD_LOGIC_VECTOR ( C_M_AXI_HOST_MEM_buser_widTH-1 DOWNTO 0 );
+    m_axi_host_mem_buser       : IN  STD_LOGIC_VECTOR ( C_M_AXI_HOST_MEM_BUSER_WIDTH-1 DOWNTO 0 );
     m_axi_host_mem_bvalid      : IN  STD_LOGIC;
-    m_axi_host_mem_rdata       : IN  STD_LOGIC_VECTOR ( C_M_AXI_HOST_MEM_DATA_widTH-1 DOWNTO 0 );
-    m_axi_host_mem_rid         : IN  STD_LOGIC_VECTOR ( C_M_AXI_HOST_MEM_ID_widTH-1 DOWNTO 0 );
+    m_axi_host_mem_rdata       : IN  STD_LOGIC_VECTOR ( C_M_AXI_HOST_MEM_DATA_WIDTH-1 DOWNTO 0 );
+    m_axi_host_mem_rid         : IN  STD_LOGIC_VECTOR ( C_M_AXI_HOST_MEM_ID_WIDTH-1 DOWNTO 0 );
     m_axi_host_mem_rlast       : IN  STD_LOGIC;
     m_axi_host_mem_rready      : OUT STD_LOGIC;
     m_axi_host_mem_rresp       : IN  STD_LOGIC_VECTOR ( 1 DOWNTO 0 );
-    m_axi_host_mem_ruser       : IN  STD_LOGIC_VECTOR ( C_M_AXI_HOST_MEM_ruser_widTH-1 DOWNTO 0 );
+    m_axi_host_mem_ruser       : IN  STD_LOGIC_VECTOR ( C_M_AXI_HOST_MEM_RUSER_WIDTH-1 DOWNTO 0 );
     m_axi_host_mem_rvalid      : IN  STD_LOGIC;
-    m_axi_host_mem_wdata       : OUT STD_LOGIC_VECTOR ( C_M_AXI_HOST_MEM_DATA_widTH-1 DOWNTO 0 );
+    m_axi_host_mem_wdata       : OUT STD_LOGIC_VECTOR ( C_M_AXI_HOST_MEM_DATA_WIDTH-1 DOWNTO 0 );
     m_axi_host_mem_wlast       : OUT STD_LOGIC;
     m_axi_host_mem_wready      : IN  STD_LOGIC;
-    m_axi_host_mem_wstrb       : OUT STD_LOGIC_VECTOR ( (C_M_AXI_HOST_MEM_DATA_widTH/8)-1 DOWNTO 0 );
-    m_axi_host_mem_wuser       : OUT STD_LOGIC_VECTOR ( C_M_AXI_HOST_MEM_wuser_widTH-1 DOWNTO 0 );
+    m_axi_host_mem_wstrb       : OUT STD_LOGIC_VECTOR ( (C_M_AXI_HOST_MEM_DATA_WIDTH/8)-1 DOWNTO 0 );
+    m_axi_host_mem_wuser       : OUT STD_LOGIC_VECTOR ( C_M_AXI_HOST_MEM_WUSER_WIDTH-1 DOWNTO 0 );
     m_axi_host_mem_wvalid      : OUT STD_LOGIC
   );
 END action_wrapper;
@@ -208,18 +165,12 @@ ARCHITECTURE STRUCTURE OF action_wrapper IS
         C_AXI_HOST_MEM_WUSER_WIDTH   : integer   := 1;
         C_AXI_HOST_MEM_RUSER_WIDTH   : integer   := 1;
         C_AXI_HOST_MEM_BUSER_WIDTH   : integer   := 1;
-        INT_BITS                     : integer   := 64;
-        CONTEXT_BITS                 : integer   := 8;
         
         -- Parameters for HBM interfaces
-        C_AXI_CARD_HBM_P0_ADDR_WIDTH : INTEGER := 64;
-        C_AXI_CARD_HBM_P0_ID_WIDTH : INTEGER := 1;
-        C_AXI_CARD_HBM_P0_AWUSER_WIDTH : INTEGER := 1;
-        C_AXI_CARD_HBM_P0_DATA_WIDTH : INTEGER := 256;
-        C_AXI_CARD_HBM_P0_WUSER_WIDTH : INTEGER := 1;
-        C_AXI_CARD_HBM_P0_ARUSER_WIDTH : INTEGER := 1;
-        C_AXI_CARD_HBM_P0_RUSER_WIDTH : INTEGER := 1;
-        C_AXI_CARD_HBM_P0_BUSER_WIDTH : INTEGER := 1
+        --HBM_PARAMETERS_INSERTION_POINT
+        
+        INT_BITS                     : integer   := 64;
+        CONTEXT_BITS                 : integer   := 8
     );
 
     PORT (
@@ -232,51 +183,7 @@ ARCHITECTURE STRUCTURE OF action_wrapper IS
 
         --
         -- HBM interfaces
-        axi_card_hbm_p0_awvalid : OUT STD_LOGIC;
-        axi_card_hbm_p0_awready : IN STD_LOGIC;
-        axi_card_hbm_p0_awaddr : OUT STD_LOGIC_VECTOR (C_AXI_CARD_HBM_P0_ADDR_widTH-1 downto 0);
-        axi_card_hbm_p0_awid : OUT STD_LOGIC_VECTOR (C_AXI_CARD_HBM_P0_ID_widTH-1 downto 0);
-        axi_card_hbm_p0_awlen : OUT STD_LOGIC_VECTOR (7 downto 0);
-        axi_card_hbm_p0_awsize : OUT STD_LOGIC_VECTOR (2 downto 0);
-        axi_card_hbm_p0_awburst : OUT STD_LOGIC_VECTOR (1 downto 0);
-        axi_card_hbm_p0_awlock : OUT STD_LOGIC_VECTOR (1 downto 0);
-        axi_card_hbm_p0_awcache : OUT STD_LOGIC_VECTOR (3 downto 0);
-        axi_card_hbm_p0_awprot : OUT STD_LOGIC_VECTOR (2 downto 0);
-        axi_card_hbm_p0_awqos : OUT STD_LOGIC_VECTOR (3 downto 0);
-        axi_card_hbm_p0_awregion : OUT STD_LOGIC_VECTOR (3 downto 0);
-        axi_card_hbm_p0_awuser : OUT STD_LOGIC_VECTOR (C_AXI_CARD_HBM_P0_awuser_widTH-1 downto 0);
-        axi_card_hbm_p0_wvalid : OUT STD_LOGIC;
-        axi_card_hbm_p0_wready : IN STD_LOGIC;
-        axi_card_hbm_p0_wdata : OUT STD_LOGIC_VECTOR (C_AXI_CARD_HBM_P0_DATA_widTH-1 downto 0);
-        axi_card_hbm_p0_wstrb : OUT STD_LOGIC_VECTOR (C_AXI_CARD_HBM_P0_DATA_widTH/8-1 downto 0);
-        axi_card_hbm_p0_wlast : OUT STD_LOGIC;
-        axi_card_hbm_p0_wid : OUT STD_LOGIC_VECTOR (C_AXI_CARD_HBM_P0_ID_widTH-1 downto 0);
-        axi_card_hbm_p0_wuser : OUT STD_LOGIC_VECTOR (C_AXI_CARD_HBM_P0_wuser_widTH-1 downto 0);
-        axi_card_hbm_p0_arvalid : OUT STD_LOGIC;
-        axi_card_hbm_p0_arready : IN STD_LOGIC;
-        axi_card_hbm_p0_araddr : OUT STD_LOGIC_VECTOR (C_AXI_CARD_HBM_P0_ADDR_widTH-1 downto 0);
-        axi_card_hbm_p0_arid : OUT STD_LOGIC_VECTOR (C_AXI_CARD_HBM_P0_ID_widTH-1 downto 0);
-        axi_card_hbm_p0_arlen : OUT STD_LOGIC_VECTOR (7 downto 0);
-        axi_card_hbm_p0_arsize : OUT STD_LOGIC_VECTOR (2 downto 0);
-        axi_card_hbm_p0_arburst : OUT STD_LOGIC_VECTOR (1 downto 0);
-        axi_card_hbm_p0_arlock : OUT STD_LOGIC_VECTOR (1 downto 0);
-        axi_card_hbm_p0_arcache : OUT STD_LOGIC_VECTOR (3 downto 0);
-        axi_card_hbm_p0_arprot : OUT STD_LOGIC_VECTOR (2 downto 0);
-        axi_card_hbm_p0_arqos : OUT STD_LOGIC_VECTOR (3 downto 0);
-        axi_card_hbm_p0_arregion : OUT STD_LOGIC_VECTOR (3 downto 0);
-        axi_card_hbm_p0_aruser : OUT STD_LOGIC_VECTOR (C_AXI_CARD_HBM_P0_aruser_widTH-1 downto 0);
-        axi_card_hbm_p0_rvalid : IN STD_LOGIC;
-        axi_card_hbm_p0_rready : OUT STD_LOGIC;
-        axi_card_hbm_p0_rdata : IN STD_LOGIC_VECTOR (C_AXI_CARD_HBM_P0_DATA_widTH-1 downto 0);
-        axi_card_hbm_p0_rlast : IN STD_LOGIC;
-        axi_card_hbm_p0_rid : IN STD_LOGIC_VECTOR (C_AXI_CARD_HBM_P0_ID_widTH-1 downto 0);
-        axi_card_hbm_p0_ruser : IN STD_LOGIC_VECTOR (C_AXI_CARD_HBM_P0_ruser_widTH-1 downto 0);
-        axi_card_hbm_p0_rresp : IN STD_LOGIC_VECTOR (1 downto 0);
-        axi_card_hbm_p0_bvalid : IN STD_LOGIC;
-        axi_card_hbm_p0_bready : OUT STD_LOGIC;
-        axi_card_hbm_p0_bresp : IN STD_LOGIC_VECTOR (1 downto 0);
-        axi_card_hbm_p0_bid : IN STD_LOGIC_VECTOR (C_AXI_CARD_HBM_P0_ID_widTH-1 downto 0);
-        axi_card_hbm_p0_buser : IN STD_LOGIC_VECTOR (C_AXI_CARD_HBM_P0_buser_widTH-1 downto 0);
+        --HBM_ENTITY_PORTS_INSERTION_POINT
         
         --
         -- Ports for NVMe control Interface                                                        -- only for DDRI_USED=TRUE
@@ -326,29 +233,29 @@ ARCHITECTURE STRUCTURE OF action_wrapper IS
         axi_nvme_wuser          : out std_logic_vector(0 downto 0);                                -- only for NVME_USED=TRUE
 
         -- Ports of Axi Slave Bus Interface AXI_CTRL_REG
-        axi_ctrl_reg_awaddr     : in std_logic_vector(C_AXI_CTRL_REG_ADDR_widTH-1 downto 0);
+        axi_ctrl_reg_awaddr     : in std_logic_vector(C_AXI_CTRL_REG_ADDR_WIDTH-1 downto 0);
      -- axi_ctrl_reg_awprot : in std_logic_vector(2 downto 0);
         axi_ctrl_reg_awvalid    : in std_logic;
         axi_ctrl_reg_awready    : out std_logic;
-        axi_ctrl_reg_wdata      : in std_logic_vector(C_AXI_CTRL_REG_DATA_widTH-1 downto 0);
-        axi_ctrl_reg_wstrb      : in std_logic_vector((C_AXI_CTRL_REG_DATA_widTH/8)-1 downto 0);
+        axi_ctrl_reg_wdata      : in std_logic_vector(C_AXI_CTRL_REG_DATA_WIDTH-1 downto 0);
+        axi_ctrl_reg_wstrb      : in std_logic_vector((C_AXI_CTRL_REG_DATA_WIDTH/8)-1 downto 0);
         axi_ctrl_reg_wvalid     : in std_logic;
         axi_ctrl_reg_wready     : out std_logic;
         axi_ctrl_reg_bresp      : out std_logic_vector(1 downto 0);
         axi_ctrl_reg_bvalid     : out std_logic;
         axi_ctrl_reg_bready     : in std_logic;
-        axi_ctrl_reg_araddr     : in std_logic_vector(C_AXI_CTRL_REG_ADDR_widTH-1 downto 0);
+        axi_ctrl_reg_araddr     : in std_logic_vector(C_AXI_CTRL_REG_ADDR_WIDTH-1 downto 0);
         -- axi_ctrl_reg_arprot  : in std_logic_vector(2 downto 0);
         axi_ctrl_reg_arvalid    : in std_logic;
         axi_ctrl_reg_arready    : out std_logic;
-        axi_ctrl_reg_rdata      : out std_logic_vector(C_AXI_CTRL_REG_DATA_widTH-1 downto 0);
+        axi_ctrl_reg_rdata      : out std_logic_vector(C_AXI_CTRL_REG_DATA_WIDTH-1 downto 0);
         axi_ctrl_reg_rresp      : out std_logic_vector(1 downto 0);
         axi_ctrl_reg_rvalid     : out std_logic;
         axi_ctrl_reg_rready     : in std_logic;
 
         -- Ports of Axi Master Bus Interface AXI_HOST_MEM
                 -- to HOST memory
-        axi_host_mem_awaddr   : out std_logic_vector(C_AXI_HOST_MEM_ADDR_widTH-1 downto 0);
+        axi_host_mem_awaddr   : out std_logic_vector(C_AXI_HOST_MEM_ADDR_WIDTH-1 downto 0);
         axi_host_mem_awlen    : out std_logic_vector(7 downto 0);
         axi_host_mem_awsize   : out std_logic_vector(2 downto 0);
         axi_host_mem_awburst  : out std_logic_vector(1 downto 0);
@@ -359,15 +266,15 @@ ARCHITECTURE STRUCTURE OF action_wrapper IS
         axi_host_mem_awqos    : out std_logic_vector(3 downto 0);
         axi_host_mem_awvalid  : out std_logic;
         axi_host_mem_awready  : in std_logic;
-        axi_host_mem_wdata    : out std_logic_vector(C_AXI_HOST_MEM_DATA_widTH-1 downto 0);
-        axi_host_mem_wstrb    : out std_logic_vector(C_AXI_HOST_MEM_DATA_widTH/8-1 downto 0);
+        axi_host_mem_wdata    : out std_logic_vector(C_AXI_HOST_MEM_DATA_WIDTH-1 downto 0);
+        axi_host_mem_wstrb    : out std_logic_vector(C_AXI_HOST_MEM_DATA_WIDTH/8-1 downto 0);
         axi_host_mem_wlast    : out std_logic;
         axi_host_mem_wvalid   : out std_logic;
         axi_host_mem_wready   : in std_logic;
         axi_host_mem_bresp    : in std_logic_vector(1 downto 0);
         axi_host_mem_bvalid   : in std_logic;
         axi_host_mem_bready   : out std_logic;
-        axi_host_mem_araddr   : out std_logic_vector(C_AXI_HOST_MEM_ADDR_widTH-1 downto 0);
+        axi_host_mem_araddr   : out std_logic_vector(C_AXI_HOST_MEM_ADDR_WIDTH-1 downto 0);
         axi_host_mem_arlen    : out std_logic_vector(7 downto 0);
         axi_host_mem_arsize   : out std_logic_vector(2 downto 0);
         axi_host_mem_arburst  : out std_logic_vector(1 downto 0);
@@ -378,21 +285,21 @@ ARCHITECTURE STRUCTURE OF action_wrapper IS
         axi_host_mem_arqos    : out std_logic_vector(3 downto 0);
         axi_host_mem_arvalid  : out std_logic;
         axi_host_mem_arready  : in std_logic;
-        axi_host_mem_rdata    : in std_logic_vector(C_AXI_HOST_MEM_DATA_widTH-1 downto 0);
+        axi_host_mem_rdata    : in std_logic_vector(C_AXI_HOST_MEM_DATA_WIDTH-1 downto 0);
         axi_host_mem_rresp    : in std_logic_vector(1 downto 0);
         axi_host_mem_rlast    : in std_logic;
         axi_host_mem_rvalid   : in std_logic;
         axi_host_mem_rready   : out std_logic;
 --      axi_host_mem_error    : out std_logic;
-        axi_host_mem_arid     : out std_logic_vector(C_AXI_HOST_MEM_ID_widTH-1 downto 0);
-        axi_host_mem_aruser   : out std_logic_vector(C_AXI_HOST_MEM_aruser_widTH-1 downto 0);
-        axi_host_mem_awid     : out std_logic_vector(C_AXI_HOST_MEM_ID_widTH-1 downto 0);
-        axi_host_mem_awuser   : out std_logic_vector(C_AXI_HOST_MEM_awuser_widTH-1 downto 0);
-        axi_host_mem_bid      : in std_logic_vector(C_AXI_HOST_MEM_ID_widTH-1 downto 0);
-        axi_host_mem_buser    : in std_logic_vector(C_AXI_HOST_MEM_buser_widTH-1 downto 0);
-        axi_host_mem_rid      : in std_logic_vector(C_AXI_HOST_MEM_ID_widTH-1 downto 0);
-        axi_host_mem_ruser    : in std_logic_vector(C_AXI_HOST_MEM_ruser_widTH-1 downto 0);
-        axi_host_mem_wuser    : out std_logic_vector(C_AXI_HOST_MEM_wuser_widTH-1 downto 0)
+        axi_host_mem_arid     : out std_logic_vector(C_AXI_HOST_MEM_ID_WIDTH-1 downto 0);
+        axi_host_mem_aruser   : out std_logic_vector(C_AXI_HOST_MEM_ARUSER_WIDTH-1 downto 0);
+        axi_host_mem_awid     : out std_logic_vector(C_AXI_HOST_MEM_ID_WIDTH-1 downto 0);
+        axi_host_mem_awuser   : out std_logic_vector(C_AXI_HOST_MEM_AWUSER_WIDTH-1 downto 0);
+        axi_host_mem_bid      : in std_logic_vector(C_AXI_HOST_MEM_ID_WIDTH-1 downto 0);
+        axi_host_mem_buser    : in std_logic_vector(C_AXI_HOST_MEM_BUSER_WIDTH-1 downto 0);
+        axi_host_mem_rid      : in std_logic_vector(C_AXI_HOST_MEM_ID_WIDTH-1 downto 0);
+        axi_host_mem_ruser    : in std_logic_vector(C_AXI_HOST_MEM_RUSER_WIDTH-1 downto 0);
+        axi_host_mem_wuser    : out std_logic_vector(C_AXI_HOST_MEM_WUSER_WIDTH-1 downto 0)
     );
   END COMPONENT action_example;
 
@@ -401,30 +308,24 @@ action_0: COMPONENT action_example
   GENERIC MAP (
 
     -- Parameters for Axi Slave Bus Interface AXI_CTRL_REG
-    C_AXI_CTRL_REG_DATA_widTH      => C_S_AXI_CTRL_REG_DATA_widTH,
-    C_AXI_CTRL_REG_ADDR_widTH      => C_S_AXI_CTRL_REG_ADDR_widTH,
+    C_AXI_CTRL_REG_DATA_WIDTH      => C_S_AXI_CTRL_REG_DATA_WIDTH,
+    C_AXI_CTRL_REG_ADDR_WIDTH      => C_S_AXI_CTRL_REG_ADDR_WIDTH,
 
     -- Parameters for Axi Master Bus Interface AXI_HOST_MEM : to Host memory
-    C_AXI_HOST_MEM_ID_widTH        => C_M_AXI_HOST_MEM_ID_widTH,
-    C_AXI_HOST_MEM_ADDR_widTH      => C_M_AXI_HOST_MEM_ADDR_widTH,
-    C_AXI_HOST_MEM_DATA_widTH      => C_M_AXI_HOST_MEM_DATA_widTH,
-    C_AXI_HOST_MEM_awuser_widTH    => C_M_AXI_HOST_MEM_awuser_widTH,
-    C_AXI_HOST_MEM_aruser_widTH    => C_M_AXI_HOST_MEM_aruser_widTH,
-    C_AXI_HOST_MEM_wuser_widTH     => C_M_AXI_HOST_MEM_wuser_widTH,
-    C_AXI_HOST_MEM_ruser_widTH     => C_M_AXI_HOST_MEM_ruser_widTH,
-    C_AXI_HOST_MEM_buser_widTH     => C_M_AXI_HOST_MEM_buser_widTH,
-    INT_BITS                       => INT_BITS,
-    CONTEXT_BITS                   => CONTEXT_BITS,
+    C_AXI_HOST_MEM_ID_WIDTH        => C_M_AXI_HOST_MEM_ID_WIDTH,
+    C_AXI_HOST_MEM_ADDR_WIDTH      => C_M_AXI_HOST_MEM_ADDR_WIDTH,
+    C_AXI_HOST_MEM_DATA_WIDTH      => C_M_AXI_HOST_MEM_DATA_WIDTH,
+    C_AXI_HOST_MEM_AWUSER_WIDTH    => C_M_AXI_HOST_MEM_AWUSER_WIDTH,
+    C_AXI_HOST_MEM_ARUSER_WIDTH    => C_M_AXI_HOST_MEM_ARUSER_WIDTH,
+    C_AXI_HOST_MEM_WUSER_WIDTH     => C_M_AXI_HOST_MEM_WUSER_WIDTH,
+    C_AXI_HOST_MEM_RUSER_WIDTH     => C_M_AXI_HOST_MEM_RUSER_WIDTH,
+    C_AXI_HOST_MEM_BUSER_WIDTH     => C_M_AXI_HOST_MEM_BUSER_WIDTH,
     
     -- Parameters for HBM interfaces
-    C_AXI_CARD_HBM_P0_ADDR_widTH    => C_M_AXI_CARD_HBM_P0_ADDR_widTH,
-    C_AXI_CARD_HBM_P0_ID_widTH      => C_M_AXI_CARD_HBM_P0_ID_widTH,
-    C_AXI_CARD_HBM_P0_awuser_widTH  => C_M_AXI_CARD_HBM_P0_awuser_widTH,
-    C_AXI_CARD_HBM_P0_DATA_widTH    => C_M_AXI_CARD_HBM_P0_DATA_widTH,
-    C_AXI_CARD_HBM_P0_wuser_widTH   => C_M_AXI_CARD_HBM_P0_wuser_widTH,
-    C_AXI_CARD_HBM_P0_aruser_widTH  => C_M_AXI_CARD_HBM_P0_aruser_widTH,
-    C_AXI_CARD_HBM_P0_ruser_widTH   => C_M_AXI_CARD_HBM_P0_ruser_widTH,
-    C_AXI_CARD_HBM_P0_buser_widTH   => C_M_AXI_CARD_HBM_P0_buser_widTH
+    --HBM_PARAMETERASSIGNMENT_INSERTION_POINT
+
+    INT_BITS                       => INT_BITS,
+    CONTEXT_BITS                   => CONTEXT_BITS
   )
   PORT MAP (
     action_clk                 => ap_clk,
@@ -433,51 +334,7 @@ action_0: COMPONENT action_example
     int_src                    => interrupt_src,
     int_ctx                    => interrupt_ctx,
     int_req_ack                => interrupt_ack,
-    axi_card_hbm_p0_awvalid    => m_axi_card_hbm_p0_awvalid,
-    axi_card_hbm_p0_awready    => m_axi_card_hbm_p0_awready,
-    axi_card_hbm_p0_awaddr     => m_axi_card_hbm_p0_awaddr,
-    axi_card_hbm_p0_awid       => m_axi_card_hbm_p0_awid,
-    axi_card_hbm_p0_awlen      => m_axi_card_hbm_p0_awlen,
-    axi_card_hbm_p0_awsize     => m_axi_card_hbm_p0_awsize,
-    axi_card_hbm_p0_awburst    => m_axi_card_hbm_p0_awburst,
-    axi_card_hbm_p0_awlock     => m_axi_card_hbm_p0_awlock,
-    axi_card_hbm_p0_awcache    => m_axi_card_hbm_p0_awcache,
-    axi_card_hbm_p0_awprot     => m_axi_card_hbm_p0_awprot,
-    axi_card_hbm_p0_awqos      => m_axi_card_hbm_p0_awqos,
-    axi_card_hbm_p0_awregion   => m_axi_card_hbm_p0_awregion,
-    axi_card_hbm_p0_awuser     => m_axi_card_hbm_p0_awuser,
-    axi_card_hbm_p0_wvalid     => m_axi_card_hbm_p0_wvalid,
-    axi_card_hbm_p0_wready     => m_axi_card_hbm_p0_wready,
-    axi_card_hbm_p0_wdata      => m_axi_card_hbm_p0_wdata,
-    axi_card_hbm_p0_wstrb      => m_axi_card_hbm_p0_wstrb,
-    axi_card_hbm_p0_wlast      => m_axi_card_hbm_p0_wlast,
-    axi_card_hbm_p0_wid        => m_axi_card_hbm_p0_wid,
-    axi_card_hbm_p0_wuser      => m_axi_card_hbm_p0_wuser,
-    axi_card_hbm_p0_arvalid    => m_axi_card_hbm_p0_arvalid,
-    axi_card_hbm_p0_arready    => m_axi_card_hbm_p0_arready,
-    axi_card_hbm_p0_araddr     => m_axi_card_hbm_p0_araddr,
-    axi_card_hbm_p0_arid       => m_axi_card_hbm_p0_arid,
-    axi_card_hbm_p0_arlen      => m_axi_card_hbm_p0_arlen,
-    axi_card_hbm_p0_arsize     => m_axi_card_hbm_p0_arsize,
-    axi_card_hbm_p0_arburst    => m_axi_card_hbm_p0_arburst,
-    axi_card_hbm_p0_arlock     => m_axi_card_hbm_p0_arlock,
-    axi_card_hbm_p0_arcache    => m_axi_card_hbm_p0_arcache,
-    axi_card_hbm_p0_arprot     => m_axi_card_hbm_p0_arprot,
-    axi_card_hbm_p0_arqos      => m_axi_card_hbm_p0_arqos,
-    axi_card_hbm_p0_arregion   => m_axi_card_hbm_p0_arregion,
-    axi_card_hbm_p0_aruser     => m_axi_card_hbm_p0_aruser,
-    axi_card_hbm_p0_rvalid     => m_axi_card_hbm_p0_rvalid,
-    axi_card_hbm_p0_rready     => m_axi_card_hbm_p0_rready,
-    axi_card_hbm_p0_rdata      => m_axi_card_hbm_p0_rdata,
-    axi_card_hbm_p0_rlast      => m_axi_card_hbm_p0_rlast,
-    axi_card_hbm_p0_rid        => m_axi_card_hbm_p0_rid,
-    axi_card_hbm_p0_ruser      => m_axi_card_hbm_p0_ruser,
-    axi_card_hbm_p0_rresp      => m_axi_card_hbm_p0_rresp,
-    axi_card_hbm_p0_bvalid     => m_axi_card_hbm_p0_bvalid,
-    axi_card_hbm_p0_bready     => m_axi_card_hbm_p0_bready,
-    axi_card_hbm_p0_bresp      => m_axi_card_hbm_p0_bresp,
-    axi_card_hbm_p0_bid        => m_axi_card_hbm_p0_bid,
-    axi_card_hbm_p0_buser      => m_axi_card_hbm_p0_buser,
+    --HBM_ASSIGNMENT_INSERTION_POINT
     axi_nvme_araddr            => m_axi_nvme_araddr,                                     -- only for NVME_USED=TRUE
     axi_nvme_arburst           => m_axi_nvme_arburst,                                    -- only for NVME_USED=TRUE
     axi_nvme_arcache           => m_axi_nvme_arcache,                                    -- only for NVME_USED=TRUE
