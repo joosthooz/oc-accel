@@ -8,7 +8,6 @@ set constraintfile $action_root/hw/custom_location_constraint.xdc
 set obj [get_filesets sources_1]
 if { $obj != {} } {
    # If the blockdesign needs IP cores, they should be in an IP repo that should be referenced here
-   set_property "ip_repo_paths" "[file normalize "$action_ip_dir"]" $obj
 
    # Rebuild user ip_repo's index before adding any source files
    update_ip_catalog -rebuild
@@ -16,7 +15,7 @@ if { $obj != {} } {
 
 # Read the user blockdesign
 read_bd [ list \
-  $action_root/hw/bd/DMA1_HBM1_bd/DMA1_HBM1_bd.bd
+  $action_root/bd/DMA1_HBM1_bd/DMA1_HBM1_bd.bd
 ]
 
 add_files -fileset constrs_1 -norecurse $constraintfile
