@@ -50,6 +50,8 @@ CONSTANT    C_M_AXI_NVME_WUSER_WIDTH         : integer  :=  1;
 CONSTANT    C_M_AXI_NVME_RUSER_WIDTH         : integer  :=  1;
 CONSTANT    C_M_AXI_NVME_BUSER_WIDTH         : integer  :=  1;
 
+    -- Parameters for AXI master interfaces to HBM
+--HBM_CONSTANTS_INSERTION_POINT
 CONSTANT    C_M_AXI_CARD_HBM_P0_ID_WIDTH     : integer  := 4;
 CONSTANT    C_M_AXI_CARD_HBM_P0_DATA_WIDTH   : integer  := 256;
 CONSTANT    C_M_AXI_CARD_HBM_P0_ADDR_WIDTH   : integer  := 64;
@@ -58,6 +60,8 @@ CONSTANT    C_M_AXI_CARD_HBM_P0_WUSER_WIDTH  : integer  := 1;
 CONSTANT    C_M_AXI_CARD_HBM_P0_ARUSER_WIDTH : integer  := 1;
 CONSTANT    C_M_AXI_CARD_HBM_P0_RUSER_WIDTH  : integer  := 1;
 CONSTANT    C_M_AXI_CARD_HBM_P0_BUSER_WIDTH  : integer  := 1;
+
+
 
 
 
